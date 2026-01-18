@@ -30,3 +30,8 @@ uv add --dev black ruff ty pytest pip-audit
 - `main.py` - Application entry point
 - `tests/` - Test directory (to be created)
 - `architecture.md` - System architecture with sequence diagrams for document upsert, query, and deletion
+
+## Testing
+
+- ONLY ASSERT WHAT THE TEST OR SCENARIO CLAIMS TO VALIDATE.
+- IDEAL TESTS HAVE EXACTLY ONE ASSERTION, no less and no more.
