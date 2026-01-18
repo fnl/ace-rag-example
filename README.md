@@ -2,6 +2,9 @@
 
 A RAG (Retrieval-Augmented Generation) web service that enables natural language queries against indexed document content.
 
+**This is an example repo to document how to get started with agentic context engineering in Claude Code.**
+The repo accompanies my blog post [The rise of Agentic Context Engineering](https://fnl.es/Blog/Programming/2026-01-10+The+rise+of+Agentic+Context+Engineering).
+
 ## Overview
 
 This service provides:
