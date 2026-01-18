@@ -53,3 +53,31 @@ def test_query_with_top_k_uses_at_most_that_many_chunks(
 
     chunks_passed_to_llm = mock_llm_service.generate.call_args[0][1]
     assert len(chunks_passed_to_llm) <= 3
+
+
+def test_query_with_no_relevant_documents_indicates_no_information_found(
+    mock_llm_service: Mock,
+) -> None:
+    mock_vector_store = Mock()
+    mock_vector_store.search.return_value = []
+    app = create_app(vector_store=mock_vector_store, llm_service=mock_llm_service)
+    client = TestClient(app)
+
+    response = client.post("/query", json={"question": "What is quantum entanglement?"})
+
+    data = response.json()
+    assert "no relevant information" in data["answer"].lower()
+
+
+def test_query_with_no_relevant_documents_returns_empty_sources(
+    mock_llm_service: Mock,
+) -> None:
+    mock_vector_store = Mock()
+    mock_vector_store.search.return_value = []
+    app = create_app(vector_store=mock_vector_store, llm_service=mock_llm_service)
+    client = TestClient(app)
+
+    response = client.post("/query", json={"question": "What is quantum entanglement?"})
+
+    data = response.json()
+    assert data["sources"] == []

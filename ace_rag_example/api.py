@@ -25,6 +25,11 @@ def create_app(vector_store: VectorStore, llm_service: LLMService) -> FastAPI:
     def query(request: QueryRequest) -> QueryResponse:
         chunks = vector_store.search(request.question)
         chunks = chunks[: request.top_k]
+        if not chunks:
+            return QueryResponse(
+                answer="No relevant information was found for your question.",
+                sources=[],
+            )
         answer = llm_service.generate(request.question, chunks)
         sources = [SourceDocument(document_id=chunk["document_id"]) for chunk in chunks]
         return QueryResponse(answer=answer, sources=sources)
