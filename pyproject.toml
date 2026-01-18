@@ -1,7 +1,16 @@
 [project]
 name = "ace-rag-example"
 version = "0.1.0"
-description = "Add your description here"
+description = "RAG web service for natural language queries against indexed documents"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
+
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+    "pip-audit>=2.10.0",
+    "pytest>=9.0.2",
+    "ruff>=0.14.13",
+    "ty>=0.0.12",
+]
