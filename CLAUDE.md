@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ace-by-example is a Python application using uv for package management. Python 3.12+ required.
+ace-rag-example is a Python application using uv for package management. Python 3.12+ required.
 
 ## Development Commands
 
