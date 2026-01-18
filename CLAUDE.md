@@ -29,3 +29,4 @@ uv add --dev black ruff ty pytest pip-audit
 
 - `main.py` - Application entry point
 - `tests/` - Test directory (to be created)
+- `architecture.md` - System architecture with sequence diagrams for document upsert, query, and deletion
