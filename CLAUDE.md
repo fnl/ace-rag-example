@@ -27,8 +27,10 @@ uv add --dev black ruff ty pytest pip-audit
 
 ## Code Structure
 
-- `main.py` - Application entry point
-- `tests/` - Test directory (to be created)
+- `ace_rag_example/` - Application package
+  - `api.py` - FastAPI application and endpoints
+  - `services.py` - Service protocol definitions (VectorStore, LLMService)
+- `tests/` - Test directory
 - `architecture.md` - System architecture with sequence diagrams for document upsert, query, and deletion
 
 ## Testing

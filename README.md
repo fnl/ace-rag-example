@@ -6,17 +6,22 @@ A RAG (Retrieval-Augmented Generation) web service that enables natural language
 
 This service provides:
 
-- **Admin API**: Bulk upsert and delete documents in the vector store
-- **User API**: Natural language queries with AI-generated answers based on indexed content
+- **User API**: Natural language queries with AI-generated answers based on indexed content (implemented)
+- **Admin API**: Bulk upsert and delete documents in the vector store (planned)
 
 See [architecture.md](architecture.md) for sequence diagrams and REST API documentation.
 
 ## Tech Stack
 
-- **[FastAPI](https://fastapi.tiangolo.com/reference/)** (async): Web framework for the REST API
+**In Use:**
+
+- **[FastAPI](https://fastapi.tiangolo.com/reference/)**: Web framework for the REST API
+
+**Planned:**
+
 - **[FAISS](https://github.com/facebookresearch/faiss/wiki)**: Persisted vector store for semantic similarity search
 - **[BM25s](https://github.com/xhluca/bm25s)**: Transient full-text search using the BM25 algorithm
-- **[LangFuse](https://langfuse.com/docs)**: Observability, tracing, and evaluation of the RAG pipeline ([SDK docs](https://langfuse.com/docs/observability/sdk/overview))
+- **[LangFuse](https://langfuse.com/docs)**: Observability, tracing, and evaluation of the RAG pipeline
 
 ## Requirements
 
@@ -80,7 +85,7 @@ uv run pytest tests
 Run a specific test:
 
 ```bash
-uv run pytest tests/test_example.py::test_specific -v
+uv run pytest tests/test_query.py::test_query_returns_answer_with_sources -v
 ```
 
 ## Code Quality
@@ -113,8 +118,11 @@ uv run pip-audit
 
 ```
 ace-rag-example/
-├── main.py                  # FastAPI application entry point
+├── ace_rag_example/         # Application package
+│   ├── api.py               # FastAPI application and endpoints
+│   └── services.py          # Service protocol definitions
 ├── tests/                   # Test directory
+│   └── test_query.py        # Query endpoint tests
 ├── architecture.md          # System architecture and API docs
 ├── pyproject.toml           # Project dependencies
 ├── .pre-commit-config.yaml  # Pre-commit hook configuration
