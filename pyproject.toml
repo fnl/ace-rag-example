@@ -17,3 +17,6 @@ dev = [
     "ruff>=0.14.13",
     "ty>=0.0.12",
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
